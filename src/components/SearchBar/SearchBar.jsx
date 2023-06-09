@@ -6,6 +6,7 @@ import css from './SearchBar.module.css';
 const SearchBar = ({ getSearchQuery }) => {
   const [value, setValue] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
+  console.log('object :>> ', searchParams);
 
   const handleChange = ({ target: { value } }) => {
     setValue(value);

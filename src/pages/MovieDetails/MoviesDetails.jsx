@@ -30,7 +30,6 @@ const MoviesDetails = () => {
   const navLinkClassName = ({ isActive }) =>
     isActive ? css['active'] : css['nav-link'];
 
-  console.log('from fetch', movieInformation);
   return (
     <main>
       <Section>
