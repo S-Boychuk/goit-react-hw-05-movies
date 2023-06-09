@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Section from 'components/Section/Section';
 import Container from 'components/Container/Container';
-import FilmList from 'components/FilmList/FilmList';
+import MoviesList from 'components/MoviesList/MoviesList';
 import { getTrendingMovies } from 'services/MoviesApi';
 
 const Home = () => {
@@ -25,7 +25,7 @@ const Home = () => {
       <Section>
         <Container>
           <h1>Trending today</h1>
-          <FilmList movies={trendingMovies} />
+          <MoviesList movies={trendingMovies} />
         </Container>
       </Section>
     </main>

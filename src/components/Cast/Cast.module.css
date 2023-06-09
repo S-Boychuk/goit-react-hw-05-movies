@@ -1,0 +1,14 @@
+.casts-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.casts-list-item {
+  flex-basis: calc((100% - 120px) / 5);
+  text-align: center;
+}
+
+.casts-text {
+  margin-top: 10px;
+}

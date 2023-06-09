@@ -1,16 +1,11 @@
-.header {
-  background-color: #0b1e1e;
+.navLink-list {
+  margin-top: 30px;
 }
-
-.nav-list {
-  display: flex;
-  gap: 30px;
-}
-
 .nav-link {
   display: block;
-  padding: 32px 0;
-  color: #e9c1c1;
+  margin-bottom: 5px;
+  color: #0b1e1e;
+
   font-weight: 700;
   line-height: 1.14;
   letter-spacing: 0.02em;

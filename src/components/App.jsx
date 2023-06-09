@@ -1,10 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
-import Home from 'pages/Home';
-import Movies from 'pages/Movies';
-import MoviesDetails from 'pages/MoviesDetails';
+import MoviesDetails from 'pages/MovieDetails/MoviesDetails';
 import SharedLayout from './SharedLayout/SharedLayout';
-import Reviews from './Reviews/Reviews';
-import Cast from './Cast/Cast';
+import { lazy } from 'react';
+
+const Home = lazy(() => import('pages/Home'));
+const Movies = lazy(() => import('pages/Movies'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
+const Cast = lazy(() => import('./Cast/Cast'));
 
 export const App = () => {
   return (
@@ -12,15 +14,11 @@ export const App = () => {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
         <Route path="movies" element={<Movies />} />
-        {/* <Route path={['/:id', 'movies/:id']} element={<MoviesDetails />} /> */}
-        <Route path="/:id" element={<MoviesDetails />}>
+        <Route path="movies/:movieId" element={<MoviesDetails />}>
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
-        <Route path="movies/:id" element={<MoviesDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
+        <Route path="*" element={<Home />} />
       </Route>
     </Routes>
   );

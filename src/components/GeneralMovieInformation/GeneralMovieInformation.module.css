@@ -1,0 +1,42 @@
+.information-wrapper {
+  display: flex;
+  gap: 30px;
+}
+
+.section-second-title,
+.section-text {
+  margin-bottom: 10px;
+  line-height: 1.14;
+  letter-spacing: 0.02em;
+}
+
+.section-text {
+  margin-bottom: 20px;
+}
+
+.btn-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.go-back-btn {
+  border-radius: 40%;
+  border: none;
+  width: 50px;
+  height: 40px;
+  font-weight: 600;
+  background-color: #0b1e1e;
+  color: #e9c1c1;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  margin-right: 15px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.go-back-btn:hover,
+.go-back-btn:focus {
+  background-color: #9b132d;
+}
