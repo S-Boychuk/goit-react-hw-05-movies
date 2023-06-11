@@ -4,8 +4,15 @@ import Container from 'components/Container/Container';
 import css from './SharedLayout.module.css';
 
 const SharedLayout = () => {
+  const styles = {
+    marginTop: '30px',
+    fontSize: '24px',
+    fontWeight: 700,
+  };
+
   const navLinkClassName = ({ isActive }) =>
     isActive ? css['active'] : css['nav-link'];
+
   return (
     <>
       <header className={css.header}>
@@ -26,7 +33,13 @@ const SharedLayout = () => {
           </nav>
         </Container>
       </header>
-      <Suspense fallback={<div>Loading page...</div>}>
+      <Suspense
+        fallback={
+          <Container>
+            <div style={styles}>Loading page...</div>
+          </Container>
+        }
+      >
         <Outlet />
       </Suspense>
     </>

@@ -8,7 +8,7 @@ import css from './Cast.module.css';
 import noFound from '../../not-found.jpg';
 
 const Cast = () => {
-  const [casts, setCasts] = useState([]);
+  const [casts, setCasts] = useState(null);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -23,6 +23,10 @@ const Cast = () => {
 
     fetchCastData();
   }, [movieId]);
+
+  if (!casts) {
+    return;
+  }
 
   return (
     <Section>

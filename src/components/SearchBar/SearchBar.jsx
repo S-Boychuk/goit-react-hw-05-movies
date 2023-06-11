@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { PropTypes } from 'prop-types';
 import css from './SearchBar.module.css';
 
-const SearchBar = ({ getSearchQuery }) => {
+const SearchBar = () => {
   const [value, setValue] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
-  console.log('object :>> ', searchParams);
+  const [, setSearchParams] = useSearchParams();
 
   const handleChange = ({ target: { value } }) => {
     setValue(value);
@@ -19,7 +17,6 @@ const SearchBar = ({ getSearchQuery }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    getSearchQuery(value);
     updateQueryString(value);
     setValue('');
   };
@@ -40,10 +37,6 @@ const SearchBar = ({ getSearchQuery }) => {
       </button>
     </form>
   );
-};
-
-SearchBar.propTypes = {
-  getSearchQuery: PropTypes.func,
 };
 
 export default SearchBar;

@@ -5,9 +5,16 @@ import GeneralMovieInformation from 'components/GeneralMovieInformation/GeneralM
 import Section from 'components/Section/Section';
 import { getMovieGeneralInformation } from '../../services/MoviesApi';
 import css from './MoviesDetails.module.css';
+import noFound from '../../not-found.jpg';
 
 const MoviesDetails = () => {
-  const [movieInformation, setMovieInformation] = useState([]);
+  const styles = {
+    marginTop: '30px',
+    fontSize: '24px',
+    fontWeight: 700,
+  };
+
+  const [movieInformation, setMovieInformation] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
 
@@ -24,6 +31,10 @@ const MoviesDetails = () => {
     fetchData();
   }, [movieId]);
 
+  if (!movieInformation) {
+    return;
+  }
+
   const { poster_path, title, vote_average, overview, genres } =
     movieInformation;
 
@@ -35,14 +46,18 @@ const MoviesDetails = () => {
       <Section>
         <Container>
           <GeneralMovieInformation
-            posterPath={`https://image.tmdb.org/t/p/w342/${poster_path}`}
+            posterPath={
+              poster_path
+                ? `https://image.tmdb.org/t/p/w342/${poster_path}`
+                : noFound
+            }
             title={title}
             popularity={vote_average}
             overview={overview}
             genres={
-              genres &&
-              genres.length &&
-              genres.map(({ name }) => name).join(', ') + '.'
+              genres && genres.length > 0
+                ? genres.map(({ name }) => name).join(', ') + '.'
+                : ''
             }
           ></GeneralMovieInformation>
           <ul className={css['navLink-list']}>
@@ -67,7 +82,13 @@ const MoviesDetails = () => {
           </ul>
         </Container>
       </Section>
-      <Suspense fallback={<div>Loading page...</div>}>
+      <Suspense
+        fallback={
+          <Container>
+            <div style={styles}>Loading page...</div>
+          </Container>
+        }
+      >
         <Outlet />
       </Suspense>
     </main>

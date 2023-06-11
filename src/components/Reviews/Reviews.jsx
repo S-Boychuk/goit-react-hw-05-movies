@@ -7,7 +7,7 @@ import { getMovieReviews } from '../../services/MoviesApi';
 import css from './Reviews.module.css';
 
 const Reviews = () => {
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState(null);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -22,6 +22,10 @@ const Reviews = () => {
 
     fetchReviewsData();
   }, [movieId]);
+
+  if (!reviews) {
+    return;
+  }
 
   return (
     <Section>
